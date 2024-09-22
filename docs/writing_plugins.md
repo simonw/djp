@@ -1,0 +1,3 @@
+# Starting a plugin
+
+... to do ...

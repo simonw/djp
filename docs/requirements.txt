@@ -1,0 +1,6 @@
+sphinx
+furo
+sphinx-autobuild
+sphinx-copybutton
+myst-parser
+cogapp

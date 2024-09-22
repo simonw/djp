@@ -1,0 +1,29 @@
+[project]
+name = "django-plugins"
+version = "0.1"
+description = "A plugin system for Django"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{name = "Simon Willison"}]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "License :: OSI Approved :: Apache Software License"
+]
+dependencies = [
+    "django",
+    "pluggy",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://github.com/simonw/django-plugins"
+Changelog = "https://github.com/simonw/django-plugins/releases"
+Issues = "https://github.com/simonw/django-plugins/issues"
+CI = "https://github.com/simonw/django-plugins/actions"
+
+
+[project.optional-dependencies]
+test = ["pytest"]
