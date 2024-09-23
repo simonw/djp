@@ -1,6 +1,6 @@
 [project]
 name = "django-plugins"
-version = "0.1"
+version = "0.1a0"
 description = "A plugin system for Django"
 readme = "README.md"
 requires-python = ">=3.8"
