@@ -4,7 +4,7 @@ To install plugins that use this system you will first need to configure the plu
 
 Install this library using `pip`:
 ```bash
-pip install django-plugins
+pip install djp
 ```
 
 ## Modifying your configuration

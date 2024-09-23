@@ -1,6 +1,6 @@
-# django-plugins
+# Django Plugins
 
-[![PyPI](https://img.shields.io/pypi/v/django-plugins.svg)](https://pypi.org/project/django-plugins/)
+[![PyPI](https://img.shields.io/pypi/v/djp.svg)](https://pypi.org/project/djp/)
 [![Tests](https://github.com/simonw/django-plugins/actions/workflows/test.yml/badge.svg)](https://github.com/simonw/django-plugins/actions/workflows/test.yml)
 [![Changelog](https://img.shields.io/github/v/release/simonw/django-plugins?include_prereleases&label=changelog)](https://github.com/simonw/django-plugins/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/simonw/django-plugins/blob/main/LICENSE)
@@ -11,7 +11,7 @@ A plugin system for Django
 
 Install this library using `pip`:
 ```bash
-pip install django-plugins
+pip install djp
 ```
 
 ## Configuration

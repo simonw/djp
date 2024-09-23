@@ -1,5 +1,5 @@
 [project]
-name = "django-plugins"
+name = "djp"
 version = "0.1a0"
 description = "A plugin system for Django"
 readme = "README.md"

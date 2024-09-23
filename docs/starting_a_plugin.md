@@ -15,7 +15,7 @@ classifiers = [
 ]
 dependencies = [
     "django",
-    "django-plugins",
+    "djp",
 ]
 
 [project.entry-points.django_plugins]
