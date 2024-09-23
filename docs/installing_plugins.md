@@ -82,3 +82,9 @@ Example output:
   }
 ]
 ```
+
+## Loading plugins from a directory
+
+You can also set the `DJP_PLUGINS_DIR` environment variable to point to a directory which contains `*.py` files implementing plugins.
+
+This can be useful for plugin development, and is also used by DJP's own automated tests.

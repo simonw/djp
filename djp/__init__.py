@@ -1,12 +1,38 @@
 from .hookspecs import hookimpl
 from . import hookspecs
 import itertools
+import os
+import pathlib
 from pluggy import PluginManager
+import sys
 from typing import List
+import types
 
 pm = PluginManager("djp")
 pm.add_hookspecs(hookspecs)
 pm.load_setuptools_entrypoints("djp")
+
+
+def _module_from_path(path, name):
+    # Adapted from http://sayspy.blogspot.com/2011/07/how-to-import-module-from-just-file.html
+    mod = types.ModuleType(name)
+    mod.__file__ = path
+    with open(path, "r") as file:
+        code = compile(file.read(), path, "exec", dont_inherit=True)
+    exec(code, mod.__dict__)
+    return mod
+
+
+plugins_dir = os.environ.get("DJP_PLUGINS_DIR")
+if plugins_dir:
+    for filepath in pathlib.Path(plugins_dir).glob("*.py"):
+        mod = _module_from_path(str(filepath), name=filepath.stem)
+        try:
+            pm.register(mod)
+        except ValueError as ex:
+            print(ex, file=sys.stderr)
+            # Plugin already registered
+            pass
 
 
 class Before:

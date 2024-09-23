@@ -26,4 +26,11 @@ CI = "https://github.com/simonw/djp/actions"
 
 
 [project.optional-dependencies]
-test = ["pytest"]
+test = ["pytest", "pytest-django", "pytest-env"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.test_project.settings"
+pythonpath = ["."]
+
+[tool.pytest_env]
+DJP_PLUGINS_DIR = "tests/plugins"
