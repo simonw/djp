@@ -41,10 +41,10 @@ urlpatterns = [
 
 You can now install plugins, using `pip` or your package manager of choice.
 
-Try this example plugin, which adds a custom HTTP header with a line from the Zen of Python:
+Try this example plugin, which adds a custom HTTP header with a random composition written by Django Reinhardt:
 
 ```bash
-pip install django-zen-of-python
+pip install django-plugin-django-header
 ```
 
 Now run `curl` against your application to see the new header:
