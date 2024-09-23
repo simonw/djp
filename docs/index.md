@@ -1,4 +1,4 @@
-# djp
+# DJP: Django Plugins
 
 A plugin system for Django, based on [Pluggy](https://pluggy.readthedocs.io/).
 

@@ -1,4 +1,4 @@
-# Django Plugins
+# DJP: Django Plugins
 
 [![PyPI](https://img.shields.io/pypi/v/djp.svg)](https://pypi.org/project/djp/)
 [![Tests](https://github.com/simonw/djp/actions/workflows/test.yml/badge.svg)](https://github.com/simonw/djp/actions/workflows/test.yml)
