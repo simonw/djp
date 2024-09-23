@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.test.client import Client
 
 
@@ -14,3 +15,7 @@ def test_middleware():
 def test_urlpatterns():
     response = Client().get("/from-plugin/")
     assert response.content == b"Hello from a plugin"
+
+
+def test_settings():
+    assert settings.FROM_PLUGIN == "x"

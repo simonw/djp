@@ -53,6 +53,8 @@ def urlpatterns():
 
 Allows modifying the current Django settings in-place to configure additional settings.
 
+`current_settings` is a dictionary representing the current settings in `settings.py`.
+
 Example implementation:
 
 ```python
