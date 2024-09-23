@@ -47,3 +47,21 @@ def urlpatterns():
 
 def settings(current_settings):
     pm.hook.settings(current_settings=current_settings)
+
+
+def get_plugins():
+    plugins = []
+    plugin_to_distinfo = dict(pm.list_plugin_distinfo())
+    for plugin in pm.get_plugins():
+        plugin_info = {
+            "name": plugin.__name__,
+            "hooks": [h.name for h in pm.get_hookcallers(plugin)],
+        }
+        distinfo = plugin_to_distinfo.get(plugin)
+        if distinfo:
+            plugin_info["version"] = distinfo.version
+            plugin_info["name"] = (
+                getattr(distinfo, "name", None) or distinfo.project_name
+            )
+        plugins.append(plugin_info)
+    return plugins
