@@ -7,6 +7,8 @@
 
 A plugin system for Django
 
+Visit **[djp.readthedocs.io](https://djp.readthedocs.io/)** for full documentation, including how to install plugins and how to write new plugins.
+
 ## Installation
 
 Install this library using `pip`:
