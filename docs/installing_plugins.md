@@ -11,30 +11,30 @@ pip install djp
 
 Add this to your `settings.py` file:
 ```python
-import django_plugins
+import djp
 
 # ...
 
 INSTALLED_APPS = [
     "your_app1",
     "your_app2",
-] + django_plugins.installed_apps()
+] + djp.installed_apps()
 
 # ...
 
-MIDDLEWARE = django_plugins.middleware([
+MIDDLEWARE = djp.middleware([
     "your_middleware1",
     "your_middleware2",
 ])
 
 # And at the very end of that file:
-django_plugins.settings(globals())
+djp.settings(globals())
 ```
 And add this to your URL configuration in `urls.py`:
 ```python
 urlpatterns = [
     # ...
-] + django_plugins.urlpatterns()
+] + djp.urlpatterns()
 ```
 
 ## Adding plugins to your environment

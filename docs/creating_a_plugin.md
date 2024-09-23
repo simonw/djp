@@ -17,13 +17,13 @@ classifiers = [
 ]
 dependencies = [
     "django",
-    "django-plugins",
+    "djp",
 ]
 
-[project.entry-points.django_plugins]
+[project.entry-points.djp]
 django_plugin_special_header = "django_plugin_special_header"
 ```
-The key part here is the `[project.entry-points.django_plugins]` section. This tells the `django-plugins` system how to load the plugin - it should look for the `django_plugin_special_header` package or module.
+The key part here is the `[project.entry-points.djp section. This tells the plugins system how to load the plugin - it should look for the `django_plugin_special_header` package or module.
 
 ## Plugin directory structure
 
@@ -40,10 +40,10 @@ django-plugin-special-header/
 The `__init__.py` file should contain the plugin hook implementations. For this middleware example that will look like this:
 
 ```python
-import django_plugins
+import djp
 
 
-@django_plugins.hookimpl
+@djp.hookimpl
 def middleware():
     return ["django_plugin_secial_header.middleware.SpecialHeaderMiddleware"]
 ```

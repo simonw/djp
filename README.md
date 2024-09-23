@@ -1,9 +1,9 @@
 # Django Plugins
 
 [![PyPI](https://img.shields.io/pypi/v/djp.svg)](https://pypi.org/project/djp/)
-[![Tests](https://github.com/simonw/django-plugins/actions/workflows/test.yml/badge.svg)](https://github.com/simonw/django-plugins/actions/workflows/test.yml)
-[![Changelog](https://img.shields.io/github/v/release/simonw/django-plugins?include_prereleases&label=changelog)](https://github.com/simonw/django-plugins/releases)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/simonw/django-plugins/blob/main/LICENSE)
+[![Tests](https://github.com/simonw/djp/actions/workflows/test.yml/badge.svg)](https://github.com/simonw/djp/actions/workflows/test.yml)
+[![Changelog](https://img.shields.io/github/v/release/simonw/djp?include_prereleases&label=changelog)](https://github.com/simonw/djp/releases)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/simonw/djp/blob/main/LICENSE)
 
 A plugin system for Django
 
@@ -18,30 +18,30 @@ pip install djp
 
 Add this to your `settings.py` file:
 ```python
-import django_plugins
+import djp
 
 # ...
 
 INSTALLED_APPS = [
     "your_app1",
     "your_app2",
-] + django_plugins.installed_apps()
+] + djp.installed_apps()
 
 # ...
 
-MIDDLEWARE = django_plugins.middleware([
+MIDDLEWARE = djp.middleware([
     "your_middleware1",
     "your_middleware2",
 ])
 
 # And at the very end of that file:
-django_plugins.settings(globals())
+djp.settings(globals())
 ```
 And add this to your URL configuration in `urls.py`:
 ```python
 urlpatterns = [
     # ...
-] + django_plugins.urlpatterns()
+] + djp.urlpatterns()
 ```
 
 ## Usage
@@ -52,7 +52,7 @@ Installing a plugin in the same environment as your Django application should ca
 
 To contribute to this library, first checkout the code. Then create a new virtual environment:
 ```bash
-cd django-plugins
+cd djp
 python -m venv venv
 source venv/bin/activate
 ```

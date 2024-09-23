@@ -1,5 +1,2 @@
-from django_plugins import example_function
-
-
-def test_example_function():
-    assert example_function() == 2
+def test_todo():
+    pass

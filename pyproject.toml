@@ -19,10 +19,10 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project.urls]
-Homepage = "https://github.com/simonw/django-plugins"
-Changelog = "https://github.com/simonw/django-plugins/releases"
-Issues = "https://github.com/simonw/django-plugins/issues"
-CI = "https://github.com/simonw/django-plugins/actions"
+Homepage = "https://github.com/simonw/djp"
+Changelog = "https://github.com/simonw/djp/releases"
+Issues = "https://github.com/simonw/djp/issues"
+CI = "https://github.com/simonw/djp/actions"
 
 
 [project.optional-dependencies]

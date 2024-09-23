@@ -1,8 +1,8 @@
 from pluggy import HookimplMarker
 from pluggy import HookspecMarker
 
-hookspec = HookspecMarker("django_plugins")
-hookimpl = HookimplMarker("django_plugins")
+hookspec = HookspecMarker("djp")
+hookimpl = HookimplMarker("djp")
 
 
 @hookspec
@@ -14,7 +14,7 @@ def installed_apps():
 def middleware():
     """
     Return a list of Django middleware class strings to be added to MIDDLEWARE.
-    Optionally wrap with django_plugins.Before() or .After() to specify ordering
+    Optionally wrap with djp.Before() or djp.After() to specify ordering
     """
 
 

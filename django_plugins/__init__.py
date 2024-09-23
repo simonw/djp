@@ -4,9 +4,9 @@ import itertools
 from pluggy import PluginManager
 from typing import List
 
-pm = PluginManager("django_plugins")
+pm = PluginManager("djp")
 pm.add_hookspecs(hookspecs)
-pm.load_setuptools_entrypoints("django_plugins")
+pm.load_setuptools_entrypoints("djp")
 
 class Before:
     def __init__(self, item: str):
