@@ -3,7 +3,6 @@ from djp import get_plugins
 import json
 
 
-
 class Command(BaseCommand):
     help = "Show installed plugins"
 
