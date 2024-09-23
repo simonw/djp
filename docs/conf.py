@@ -46,7 +46,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "djp"
+project = "DJP"
 author = "Simon Willison"
 copyright = "{}, {}".format(datetime.date.today().year, author)
 
