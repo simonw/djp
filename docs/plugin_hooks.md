@@ -9,6 +9,8 @@ Return a list of Django app strings to be added to `INSTALLED_APPS`.
 Example implementation:
 
 ```python
+import djp
+
 @djp.hookimpl
 def installed_apps():
     return ["my_plugin_app"]
@@ -16,13 +18,15 @@ def installed_apps():
 
 ## middleware()
 
-Returnsa list of Django middleware class strings to be added to MIDDLEWARE.
+Return a list of Django middleware class strings to be added to MIDDLEWARE.
 
 Middleware can optionally be wrapped with `djp.Before()` or `djp.After()` to specify ordering relative to existing middleware.
 
 Example implementation:
 
 ```python
+import djp
+
 @djp.hookimpl
 def middleware():
     return [
@@ -34,11 +38,12 @@ def middleware():
 
 ## urlpatterns()
 
-Returns a list of URL patterns to be added to `urlpatterns`.
+Return a list of URL patterns to be added to `urlpatterns`.
 
 Example implementation:
 
 ```python
+import djp
 from django.urls import path
 from . import views
 
@@ -51,13 +56,15 @@ def urlpatterns():
 
 ## settings(current_settings)
 
-Allows modifying the current Django settings in-place to configure additional settings.
+Modify the current Django settings in-place to configure additional settings.
 
 `current_settings` is a dictionary representing the current settings in `settings.py`.
 
 Example implementation:
 
 ```python
+import djp
+
 @djp.hookimpl
 def settings(current_settings):
     current_settings["DATABASES"] = {
