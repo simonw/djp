@@ -16,9 +16,12 @@ pip install djp
 
 ## Configuration
 
-Add this to the end of your `settings.py` file:
+Add this to the **end** of your `settings.py` file:
 ```python
 import djp
+
+# ... existing settings.py contents
+
 djp.settings(globals())
 ```
 Then add this to your URL configuration in `urls.py`:
