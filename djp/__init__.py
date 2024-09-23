@@ -41,7 +41,7 @@ def middleware(current_middleware: List[str]):
 
 
 def urlpatterns():
-    return pm.hook.urlpatterns()
+    return list(itertools.chain(*pm.hook.urlpatterns()))
 
 
 def settings(current_settings):
