@@ -4,13 +4,13 @@ SECRET_KEY = "django-insecure-test-key"
 DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
-INSTALLED_APPS = [
+INSTALLED_APPS = (
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
-]
+)
 
-MIDDLEWARE = []
+MIDDLEWARE = tuple()
 
 ROOT_URLCONF = "tests.test_project.urls"
 

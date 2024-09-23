@@ -63,7 +63,7 @@ def middleware(current_middleware: List[str]):
             elif isinstance(item, str):
                 default.append(item)
 
-    combined = before + current_middleware + default + after
+    combined = before + to_list(current_middleware) + default + after
     return combined
 
 
@@ -73,9 +73,7 @@ def urlpatterns():
 
 def settings(current_settings):
     # First wrap INSTALLED_APPS
-    installed_apps_ = current_settings["INSTALLED_APPS"]
-    if isinstance(installed_apps_, tuple):
-        installed_apps_ = list(installed_apps_)
+    installed_apps_ = to_list(current_settings["INSTALLED_APPS"])
     installed_apps_ += installed_apps()
     current_settings["INSTALLED_APPS"] = installed_apps_
 
@@ -102,3 +100,9 @@ def get_plugins():
             )
         plugins.append(plugin_info)
     return plugins
+
+
+def to_list(tuple_or_list):
+    if isinstance(tuple_or_list, tuple):
+        return list(tuple_or_list)
+    return tuple_or_list
