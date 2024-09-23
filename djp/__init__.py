@@ -8,6 +8,7 @@ pm = PluginManager("djp")
 pm.add_hookspecs(hookspecs)
 pm.load_setuptools_entrypoints("djp")
 
+
 class Before:
     def __init__(self, item: str):
         self.item = item
@@ -19,7 +20,7 @@ class After:
 
 
 def installed_apps() -> List[str]:
-    return list(itertools.chain(*pm.hook.installed_apps()))
+    return ["djp"] + list(itertools.chain(*pm.hook.installed_apps()))
 
 
 def middleware(current_middleware: List[str]):
