@@ -52,3 +52,33 @@ Now run `curl` against your application to see the new header:
 ```bash
 curl -I http://localhost:8000/
 ```
+
+## Listing installed plugins
+
+The `showplugins` management command lists the plugins that are installed in your current environment:
+
+```bash
+./manage.py showplugins
+```
+Example output:
+```json
+[
+  {
+    "name": "django-plugin-blog",
+    "hooks": [
+      "installed_apps",
+      "middleware",
+      "settings",
+      "urlpatterns"
+    ],
+    "version": "0.1"
+  },
+  {
+    "name": "django-plugin-django-header",
+    "hooks": [
+      "middleware"
+    ],
+    "version": "0.1"
+  }
+]
+```
