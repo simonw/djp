@@ -19,3 +19,7 @@ def test_urlpatterns():
 
 def test_settings():
     assert settings.FROM_PLUGIN == "x"
+
+
+def test_installed_apps():
+    assert "tests.test_project.app1" in settings.INSTALLED_APPS
