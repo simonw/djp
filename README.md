@@ -16,28 +16,12 @@ pip install djp
 
 ## Configuration
 
-Add this to your `settings.py` file:
+Add this to the end of your `settings.py` file:
 ```python
 import djp
-
-# ...
-
-INSTALLED_APPS = [
-    "your_app1",
-    "your_app2",
-] + djp.installed_apps()
-
-# ...
-
-MIDDLEWARE = djp.middleware([
-    "your_middleware1",
-    "your_middleware2",
-])
-
-# And at the very end of that file:
 djp.settings(globals())
 ```
-And add this to your URL configuration in `urls.py`:
+Then add this to your URL configuration in `urls.py`:
 ```python
 urlpatterns = [
     # ...

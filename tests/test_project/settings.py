@@ -8,9 +8,9 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
-] + djp.installed_apps()
+]
 
-MIDDLEWARE = djp.middleware([])
+MIDDLEWARE = []
 
 ROOT_URLCONF = "tests.test_project.urls"
 

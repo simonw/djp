@@ -72,6 +72,17 @@ def urlpatterns():
 
 
 def settings(current_settings):
+    # First wrap INSTALLED_APPS
+    installed_apps_ = current_settings["INSTALLED_APPS"]
+    if isinstance(installed_apps_, tuple):
+        installed_apps_ = list(installed_apps_)
+    installed_apps_ += installed_apps()
+    current_settings["INSTALLED_APPS"] = installed_apps_
+
+    # Now MIDDLEWARE
+    current_settings["MIDDLEWARE"] = middleware(current_settings["MIDDLEWARE"])
+
+    # Now apply any other settings() hooks
     pm.hook.settings(current_settings=current_settings)
 
 
