@@ -1,6 +1,9 @@
 # Creating a plugin
 
-A Plugin is a Python package. It should have a `pyproject.toml` file that defines it, looking something like this:
+A Plugin is a Python package, usually named with `django-plugin-` as a prefix.
+
+
+It should have a `pyproject.toml` file that defines it, looking something like this:
 
 ## pyproject.toml
 
@@ -23,7 +26,7 @@ dependencies = [
 [project.entry-points.djp]
 django_plugin_special_header = "django_plugin_special_header"
 ```
-The key part here is the `[project.entry-points.djp section. This tells the plugins system how to load the plugin - it should look for the `django_plugin_special_header` package or module.
+The key part here is the `[project.entry-points.djp]` section. This tells the plugins system how to load the plugin - it should look for the `django_plugin_special_header` package or module.
 
 ## Plugin directory structure
 
