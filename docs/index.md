@@ -8,5 +8,6 @@ maxdepth: 3
 ---
 installing_plugins
 creating_a_plugin
+writing_tests
 plugin_hooks
 ```
