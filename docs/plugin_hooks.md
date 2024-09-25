@@ -20,7 +20,7 @@ def installed_apps():
 
 Return a list of Django middleware class strings to be added to MIDDLEWARE.
 
-Middleware can optionally be wrapped with `djp.Before()` or `djp.After()` to specify ordering relative to existing middleware.
+Middleware can optionally be wrapped with `djp.Before()` or `djp.After()` to specify ordering relative to existing middleware. These will then be added to the beginning or end of the middleware list, respectively.
 
 Example implementation:
 
@@ -33,6 +33,25 @@ def middleware():
         djp.Before("django.middleware.common.CommonMiddleware"),
         "my_plugin.middleware.MyPluginMiddleware",
         djp.After("django.middleware.clickjacking.XFrameOptionsMiddleware")
+    ]
+```
+
+Sometimes you may want a middleware to be inserted at an exact position relative to another middleware. You can specify that with `djp.Position()`:
+
+```python
+@djp.hookimpl
+def middleware():
+    return [
+        # This will insert the middleware directly before CommonMiddleware
+        djp.Position(
+            "my_plugin.middleware.MyPluginMiddleware",
+            before="django.middleware.common.CommonMiddleware"
+        ),
+        # And this will be inserted directly after CommonMiddleware
+        djp.Position(
+            "my_plugin.middleware.MyPluginMiddleware2",
+            after="django.middleware.common.CommonMiddleware"
+        ),
     ]
 ```
 

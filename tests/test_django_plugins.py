@@ -2,6 +2,18 @@ from django.conf import settings
 from django.test.client import Client
 
 
+def test_middleware_order():
+    assert settings.MIDDLEWARE == [
+        "tests.test_project.middleware.MiddlewareBefore",
+        "tests.test_project.middleware.Middleware",
+        "tests.test_project.middleware.Middleware4",
+        "tests.test_project.middleware.Middleware2",
+        "tests.test_project.middleware.Middleware5",
+        "tests.test_project.middleware.Middleware3",
+        "tests.test_project.middleware.MiddlewareAfter",
+    ]
+
+
 def test_middleware():
     response = Client().get("/")
     assert response["X-DJP-Middleware-After"] == "MiddlewareAfter"
@@ -9,7 +21,15 @@ def test_middleware():
     assert response["X-DJP-Middleware-Before"] == "MiddlewareBefore"
     request = response._request
     assert hasattr(request, "_notes")
-    assert request._notes == ["MiddlewareAfter", "Middleware", "MiddlewareBefore"]
+    assert request._notes == [
+        "MiddlewareAfter",
+        "Middleware3",
+        "Middleware5",
+        "Middleware2",
+        "Middleware4",
+        "Middleware",
+        "MiddlewareBefore",
+    ]
 
 
 def test_urlpatterns():

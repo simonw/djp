@@ -14,7 +14,9 @@ def installed_apps():
 def middleware():
     """
     Return a list of Django middleware class strings to be added to MIDDLEWARE.
-    Optionally wrap with djp.Before() or djp.After() to specify ordering
+    Optionally wrap with djp.Before() or djp.After() to specify ordering,
+    or wrap with djp.Position(name, before=other_name) to insert before another
+    or djp.Position(name, after=other_name) to insert after another.
     """
 
 

@@ -45,6 +45,14 @@ class After:
         self.item = item
 
 
+class Position:
+    def __init__(self, item: str, before=None, after=None):
+        assert not (before and after), "Cannot specify both before and after"
+        self.item = item
+        self.before = before
+        self.after = after
+
+
 def installed_apps() -> List[str]:
     return ["djp"] + list(itertools.chain(*pm.hook.installed_apps()))
 
@@ -53,6 +61,7 @@ def middleware(current_middleware: List[str]):
     before = []
     after = []
     default = []
+    position_items = []
 
     for batch in pm.hook.middleware():
         for item in batch:
@@ -60,10 +69,34 @@ def middleware(current_middleware: List[str]):
                 before.append(item.item)
             elif isinstance(item, After):
                 after.append(item.item)
+            elif isinstance(item, Position):
+                position_items.append(item)
             elif isinstance(item, str):
                 default.append(item)
+            else:
+                raise ValueError(f"Invalid item in middleware hook: {item}")
 
     combined = before + to_list(current_middleware) + default + after
+
+    # Handle Position items
+    for item in position_items:
+        if item.before:
+            try:
+                idx = combined.index(item.before)
+                combined.insert(idx, item.item)
+            except ValueError:
+                raise ValueError(f"Cannot find item to insert before: {item.before}")
+        elif item.after:
+            try:
+                idx = combined.index(item.after)
+                combined.insert(idx + 1, item.item)
+            except ValueError:
+                raise ValueError(f"Cannot find item to insert after: {item.after}")
+
+    print("")
+    print("combined", combined)
+    print("")
+
     return combined
 
 
