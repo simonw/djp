@@ -2,6 +2,8 @@
 
 A plugin system for Django, based on [Pluggy](https://pluggy.readthedocs.io/).
 
+See [DJP: A plugin system for Django](https://simonwillison.net/2024/Sep/25/djp-a-plugin-system-for-django/) for an introduction to this project.
+
 ## Why plugins?
 
 Django has long promoted the idea of [reusable apps](https://docs.djangoproject.com/en/5.1/intro/reusable-apps/), and there is a thriving ecosystem of open source extensions to the framework.
