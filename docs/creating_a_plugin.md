@@ -2,7 +2,6 @@
 
 A Plugin is a Python package, usually named with `django-plugin-` as a prefix.
 
-
 (cookiecutter)=
 
 ## Using cookiecutter

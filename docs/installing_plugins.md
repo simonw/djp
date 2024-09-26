@@ -24,6 +24,20 @@ urlpatterns = [
 ] + djp.urlpatterns()
 ```
 
+## To use ASGI middleware
+
+If you want to use plugins that use the {ref}`asgi_wrapper() <plugin_hook_asgi_wrapper>` hook, you will need to modify your `asgi.py` file to look like this:
+
+```python
+import os
+import djp
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "helloworld.settings")
+
+application = djp.asgi_wrapper(get_asgi_application())
+```
+
 ## Adding plugins to your environment
 
 You can now install plugins, using `pip` or your package manager of choice.
