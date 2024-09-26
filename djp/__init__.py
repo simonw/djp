@@ -93,10 +93,6 @@ def middleware(current_middleware: List[str]):
             except ValueError:
                 raise ValueError(f"Cannot find item to insert after: {item.after}")
 
-    print("")
-    print("combined", combined)
-    print("")
-
     return combined
 
 
