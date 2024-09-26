@@ -16,6 +16,41 @@ def installed_apps():
     return ["my_plugin_app"]
 ```
 
+Installed apps can optionally be wrapped with `djp.Before()` or `djp.After()` to specify ordering relative to existing installed apps. These will then be added to the beginning or end of the apps list, respectively.
+
+Example implementation: 
+
+```python
+import djp
+
+@djp.hookimpl
+def installed_apps():
+    return [
+        "my_plugin_app"
+        djp.After("django.contrib.sessions"),
+    ]
+```
+
+Sometimes you may want an app to be inserted at an exact position relative to another app. You can specify that with `djp.Position()`:
+
+```python
+@djp.hookimpl
+def installed_apps():
+    return [
+        # This will insert the app directly before django.contrib.sessions
+        djp.Position(
+            "my_plugin_app",
+            before="django.contrib.sessions"
+        ),
+        # And this will be inserted directly after django.contrib.admin
+        djp.Position(
+            "my_plugin_app2",
+            after="django.contrib.admin"
+        ),
+    ]
+```
+
+
 ## middleware()
 
 Return a list of Django middleware class strings to be added to MIDDLEWARE.
