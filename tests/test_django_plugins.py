@@ -1,5 +1,7 @@
 from django.conf import settings
 from django.test.client import Client
+import httpx
+import pytest
 
 
 def test_middleware_order():
@@ -43,3 +45,20 @@ def test_settings():
 
 def test_installed_apps():
     assert "tests.test_project.app1" in settings.INSTALLED_APPS
+
+
+@pytest.mark.asyncio
+async def test_asgi_wrapper():
+    from django.core.asgi import get_asgi_application
+    from djp import asgi_wrapper
+
+    application = get_asgi_application()
+    wrapped_application = asgi_wrapper(application)
+
+    async with httpx.AsyncClient(
+        transport=httpx.ASGITransport(app=wrapped_application),
+        base_url="http://testserver",
+    ) as client:
+        response = await client.get("http://testserver/hello")
+        assert response.status_code == 200
+        assert response.text == "Hello world"

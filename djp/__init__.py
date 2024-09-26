@@ -139,3 +139,9 @@ def to_list(tuple_or_list):
     if isinstance(tuple_or_list, tuple):
         return list(tuple_or_list)
     return tuple_or_list
+
+
+def asgi_wrapper(application):
+    for wrapper in pm.hook.asgi_wrapper():
+        application = wrapper(application)
+    return application

@@ -26,11 +26,12 @@ CI = "https://github.com/simonw/djp/actions"
 
 
 [project.optional-dependencies]
-test = ["pytest", "pytest-django", "pytest-env"]
+test = ["pytest", "pytest-django", "pytest-env", "pytest-asyncio", "httpx"]
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "tests.test_project.settings"
 pythonpath = ["."]
+asyncio_default_fixture_loop_scope = "function"
 
 [tool.pytest_env]
 DJP_PLUGINS_DIR = "tests/plugins"

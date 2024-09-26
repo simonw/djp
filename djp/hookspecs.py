@@ -28,3 +28,8 @@ def urlpatterns():
 @hookspec
 def settings(current_settings):
     """Modify current_settings in place to finish configuring settings.py"""
+
+
+@hookspec
+def asgi_wrapper():
+    """Returns an ASGI middleware callable to wrap our ASGI application with"""
