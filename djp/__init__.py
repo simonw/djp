@@ -1,12 +1,14 @@
-from .hookspecs import hookimpl
-from . import hookspecs
 import itertools
 import os
 import pathlib
-from pluggy import PluginManager
 import sys
-from typing import List
 import types
+from typing import List
+
+from pluggy import PluginManager
+
+from . import hookspecs
+from .hookspecs import hookimpl
 
 pm = PluginManager("djp")
 pm.add_hookspecs(hookspecs)
@@ -54,16 +56,16 @@ class Position:
 
 
 def installed_apps() -> List[str]:
-    return ["djp"] + list(itertools.chain(*pm.hook.installed_apps()))
+    return ["djp"] + list(positional_hook(pm.hook.installed_apps(), []))
 
 
-def middleware(current_middleware: List[str]):
+def positional_hook(batches, existing_items: List[str]):
     before = []
     after = []
     default = []
     position_items = []
 
-    for batch in pm.hook.middleware():
+    for batch in batches:
         for item in batch:
             if isinstance(item, Before):
                 before.append(item.item)
@@ -76,7 +78,7 @@ def middleware(current_middleware: List[str]):
             else:
                 raise ValueError(f"Invalid item in middleware hook: {item}")
 
-    combined = before + to_list(current_middleware) + default + after
+    combined = before + to_list(existing_items) + default + after
 
     # Handle Position items
     for item in position_items:
@@ -94,6 +96,10 @@ def middleware(current_middleware: List[str]):
                 raise ValueError(f"Cannot find item to insert after: {item.after}")
 
     return combined
+
+
+def middleware(current_middleware: List[str]):
+    return positional_hook(pm.hook.middleware(), current_middleware)
 
 
 def urlpatterns():

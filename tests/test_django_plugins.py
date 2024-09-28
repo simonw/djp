@@ -1,7 +1,7 @@
-from django.conf import settings
-from django.test.client import Client
 import httpx
 import pytest
+from django.conf import settings
+from django.test.client import Client
 
 
 def test_middleware_order():
@@ -45,6 +45,19 @@ def test_settings():
 
 def test_installed_apps():
     assert "tests.test_project.app1" in settings.INSTALLED_APPS
+
+
+def test_installed_apps_order():
+    assert settings.INSTALLED_APPS == [
+        "django.contrib.admin",
+        "django.contrib.auth",
+        "django.contrib.contenttypes",
+        "djp",
+        "tests.test_project.fake_app_before",
+        "tests.test_project.app2",
+        "tests.test_project.app1",
+        "tests.test_project.fake_app_after",
+    ]
 
 
 @pytest.mark.asyncio
