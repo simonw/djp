@@ -12,6 +12,18 @@ Many of these require the user to manually configure them, by modifying their `s
 
 DJP addresses this limitation: you can configure DJP once for a project, after which any DJP-compliant plugins you install will be able to automatically modify your Django configuration to enable their functionality.
 
+## Available plugins
+
+[django-plugin-django-header](https://github.com/simonw/django-plugin-django-header) is an example plugin that adds a `Django-Composition` HTTP header to every HTTP response containing the name of a random composition by Django Reinhardt.
+
+[django-plugin-blog](https://github.com/simonw/django-plugin-blog) implements a full blog application for Django, with entries and tags and an Atom feed and a configured Django admin interface. Installing this plugin adds the blog under the `/blog/` URL path.
+
+[django-plugin-database-url](https://github.com/simonw/django-plugin-database-url) configures Django to connect to the database defined by the `DATABASE_URL` environment variable.
+
+[django-plugin-datasette](https://github.com/simonw/django-plugin-datasette) adds a [Datasette](https://datasette.io) instance to Django, providing a read-only UI and JSON API for exploring data in any SQLite databases configured using Django’s `DATABASES` setting.
+
+## Documentation
+
 ```{toctree}
 ---
 maxdepth: 3

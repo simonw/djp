@@ -57,7 +57,6 @@ class Position:
 
 def installed_apps() -> List[str]:
     return ["djp"] + list(positional_hook(pm.hook.installed_apps(), []))
-    # return ["djp"] + list(itertools.chain(*pm.hook.installed_apps()))
 
 
 def positional_hook(batches, existing_items: List[str]):
@@ -100,12 +99,7 @@ def positional_hook(batches, existing_items: List[str]):
 
 
 def middleware(current_middleware: List[str]):
-    combined = positional_hook(pm.hook.middleware(), current_middleware)
-    print("")
-    print("combined", combined)
-    print("")
-
-    return combined
+    return positional_hook(pm.hook.middleware(), current_middleware)
 
 
 def urlpatterns():
