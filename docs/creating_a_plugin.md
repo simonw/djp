@@ -97,7 +97,7 @@ import djp
 
 @djp.hookimpl
 def middleware():
-    return ["django_plugin_secial_header.middleware.SpecialHeaderMiddleware"]
+    return ["django_plugin_special_header.middleware.SpecialHeaderMiddleware"]
 ```
 The `middleware.py` file should contain the actual middleware implementation. Here's an example:
 
